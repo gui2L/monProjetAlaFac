@@ -1,5 +1,6 @@
 import java.awt.*;
 
+
 public class Conway {
     /**
      * L'amorçage est fait en créant le modèle et la vue, par un simple appel

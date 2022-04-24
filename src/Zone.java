@@ -6,18 +6,26 @@ public class Zone {
     private ArrayList<Joueur> joueurs;
     private ArrayList<Artefact> artefacts;
     private final int x, y;
+    private String definition;
 
-    public Zone(CModele modele, int x, int y) {
+    public Zone(CModele modele, int x, int y, String def) {
         this.modele = modele;
-        this.etat = 0;
+        this.etat = 2;
         this.x = x; this.y = y;
         this.artefacts = new ArrayList<Artefact>();
         this.joueurs = new ArrayList<Joueur>();
+        this.definition = def;
     }
 
     public int status(){
         return this.etat;
     }
+    public String def(){return this.definition;}
+
+    public void setStatus(int etat) {
+        this.etat = etat;
+    }
+    public void setDefinition(String def){this.definition = def;}
 
     public int getX() {
         return x;
@@ -51,10 +59,19 @@ public class Zone {
         this.artefacts.remove(a);
     }
 
-    public void inonde(){
-        if (etat == 0){
-            etat = 1;
-        }else if (etat == 1){
-            etat = 2;
+    public void assecher() {
+        if (this.etat == 1) {
+            this.etat -= 1;
+        } else {
+            System.out.println("Zone submergée ou asséchée");
         }
-}}
+    }
+
+    public void inonde() {
+        if (this.status() == 1 || this.status() == 0) {
+            this.etat += 1;
+        }else if (this.status() == 10){
+
+        }
+    }
+}

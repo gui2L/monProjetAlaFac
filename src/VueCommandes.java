@@ -1,11 +1,14 @@
 import javax.swing.*;
 
-class VueCommandes extends JPanel {
+class VueCommandes extends JPanel{
     /**
      * Pour que le bouton puisse transmettre ses ordres, on garde une
      * référence au modèle.
      */
     private CModele modele;
+    public Controleur dpl;
+    public Controleur asc;
+    public Controleur fdt;
 
     /** Constructeur. */
     public VueCommandes(CModele modele) {
@@ -16,23 +19,18 @@ class VueCommandes extends JPanel {
          * Puis on ajoute ce bouton au panneau [this].
          */
 
-        /**JButton boutonAvanceDroite = new JButton(">");
-        JButton boutonAvanceGauche = new JButton("<");
-        JButton boutonAvanceHaut = new JButton("^");
-        JButton boutonAvanceBas = new JButton("v");
 
-        JButton assecherZone = new JButton("Assecher");
-        JButton recupererArtefact = new JButton("recuperer");*/
 
-        JButton End = new JButton("Fin de Tour");
+        //JButton assecherZone = new JButton("Assecher");
+        //JButton recupererArtefact = new JButton("recuperer");
 
-        /**this.add(boutonAvanceDroite);
-        this.add(boutonAvanceGauche);
-        this.add(boutonAvanceHaut);
-        this.add(boutonAvanceBas);
-        this.add(assecherZone);
-        this.add(recupererArtefact);*/
-        this.add(End);
+        //JButton End = new JButton("Fin de Tour");
+        //JButton dplHaut = new JButton("^");
+
+       // this.add(assecherZone);
+        //this.add(recupererArtefact);
+        //this.add(End);
+        //this.add(dplHaut);
         /**
          * Le bouton, lorsqu'il est cliqué par l'utilisateur, produit un
          * événement, de classe [ActionEvent].
@@ -55,25 +53,35 @@ class VueCommandes extends JPanel {
          * contrôleur sera donc particulièrement simple. Cela nécessite
          * néanmoins la création d'une classe dédiée.
          */
-        Controleur ctrl = new Controleur(modele);
+        Controleur fdt = new FindeTour(modele);
+
+        Controleur dpl = new Deplacement(modele);
+        Controleur asc = new Assecher(modele);
+        Controleur rec = new Recuperation(modele);
+        Controleur ato = new Recuperation(modele);
+
         /** Enregistrement du contrôleur comme auditeur du bouton. */
 
-        /**boutonAvanceDroite.addActionListener(ctrl);
-        boutonAvanceGauche.addActionListener(ctrl);
-        boutonAvanceHaut.addActionListener(ctrl);
-        boutonAvanceBas.addActionListener(ctrl);
-        assecherZone.addActionListener(ctrl);
-        recupererArtefact.addActionListener(ctrl);*/
-        End.addActionListener(ctrl);
 
+        this.addKeyListener(fdt);
+
+        //this.addKeyListener(fdt);
+        //VueCommandes.nombouton.setText("Actions Restantes : ")
+
+
+        this.addKeyListener(ato);
+        this.addKeyListener(dpl);
+        this.addKeyListener(asc);
+        this.addKeyListener(rec);
+        this.setFocusable(true);
         /**
          * Variante : une lambda-expression qui évite de créer une classe
          * spécifique pour un contrôleur simplissime.
-         *
+
          JButton boutonAvance = new JButton(">");
          this.add(boutonAvance);
-         boutonAvance.addActionListener(e -> { modele.avance(); });
-         *
+         boutonAvance.addActionListener(e -> { if (e.equals(End)) {modele.findetour();}  });
+
          */
 
     }
