@@ -58,7 +58,7 @@ class VueCommandes extends JPanel{
         Controleur dpl = new Deplacement(modele);
         Controleur asc = new Assecher(modele);
         Controleur rec = new Recuperation(modele);
-        Controleur ato = new Recuperation(modele);
+        Controleur ato = new UtilisationAtout(modele);
 
         /** Enregistrement du contrôleur comme auditeur du bouton. */
 
