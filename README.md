@@ -4,6 +4,8 @@ Projet Ile Interdite
 
 LES PARTIES DU SUJET TRAITEES
 
+(Dans tous nos fichiers, les COMMENTAIRES NE SONT PAS A PRENDRE EN COMPTE, ayant manqué de temps, il se peut que vous retrouver des bouts de commentaires qui gênent la lisibilité de notre code, toutes nos excuses.)
+
 - 10.1
   L'île est representé par des cases carrés.
 
