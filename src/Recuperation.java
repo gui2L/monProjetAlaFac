@@ -12,7 +12,7 @@ public class Recuperation extends Controleur{
         Joueur j = tourjoueur();
         if (e.getKeyCode() == KeyEvent.VK_R) {
             if(modele.recupArtfct(j)){
-
+                modele.recupArtfct(j);
                 artefrecup += 1;
                 if (artefrecup == 4) {
                     System.out.println("Tous les artefacts ont ete recuperes!!");
